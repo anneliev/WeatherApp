@@ -1,0 +1,19 @@
+Ett väder API där man kan 
+- söka på stad som visar vilket väder det är just nu
+- söka 10 dagar framåt
+- kolla solens upp och nedgång i staden
+- historiskt väder för dagen, hur det brukar vara
+
+onepage
+navbar med home och about, länka till ställen på sidan
+searchbar där man skriver i staden
+searchbar för staden 10 dagar framåt 
+searchbar för solens upp och nedgång
+datumväljare och searchbar för historikt väder
+
+alternativt att knappar appendeas när man får fram staden man sökt på i nåt av fälten, knapparna har de andrakriterierna som värden
+
+när man sökt på en stad görs get request och sedan visas en kartbild där stden är med och en ruta eller dylikt som beskriver vädret
+
+ha en loading indikator när datan hämtas
+
