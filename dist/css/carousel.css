@@ -75,6 +75,10 @@ li{
   transform: scale(2);
 }
 
+#loadsymbol{
+  display: none;
+  animation: 2s;
+}
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
