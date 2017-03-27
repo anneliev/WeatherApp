@@ -6,40 +6,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>Weather App</title>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <link href="dist/css/carousel.css" rel="stylesheet">
   </head>
   <body>
-
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">Carousel</a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
+  
+    <nav class="navbar fixed-top navbar-inverse bg-inverse">
+      <a class="navbar-brand" href="#"><h3><strong>Weather App</strong></h3></a>
+      <a class="navbar-brand" href="#about">About</a>
     </nav>
-
+    
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -48,32 +29,29 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-          <img class="first-slide" src="pics/sunflower.jpg" alt="First slide">
+          <img src="pics/sunny-small.jpg" alt="Sunny">
           <div class="container">
             <div class="carousel-caption d-none d-md-block text-left">
-              <h1>Example headline.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <h1>Is it sunny?</h1>
+              <p>Check the weather around the world</p>
             </div>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="second-slide" src="pics/rainy.jpg" alt="Second slide">
+          <img src="pics/rain-small.jpg" alt="Rainy">
           <div class="container">
             <div class="carousel-caption d-none d-md-block">
-              <h1>Another example headline.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <h1>Will it rain?</h1>
+              <p>Get a 5 day forecast</p>
             </div>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="third-slide" src="pics/snowy.jpg" alt="Third slide">
+          <img src="pics/sunset-small.jpg" alt="Sunset">
           <div class="container">
             <div class="carousel-caption d-none d-md-block text-right">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              <h1>When does the sun rise?</h1>
+              <p>See at what time the sun rises and sets today</p>
             </div>
           </div>
         </div>
@@ -97,70 +75,57 @@
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-3">
-          <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="pics/weather-icon-suncloud.png" width="140" height="140" alt="Sun/cloud icon">
+          <h2>Current weather</h2>
+          <p>Search todays weather in a city anywhere in the world</p>
+          <input id="searchCurrent" class="form-control" placeholder="Stockholm">
+          <button id="currentBtn" class="btn btn-info" type="button">Get current weather</button>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-3">
-          <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="pics/weather-icon-lightning.png" width="140" height="140" alt="Lightning icon">
+          <h2>5 day forecast</h2>
+          <p>See what the weather we be like tomorrow and 5 days from now</p>
+          <input id="searchForecast" class="form-control" placeholder="city">
+          <button id="forecastBtn" class="btn btn-info" type="button">Get forecast</button>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-3">
-          <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="pics/weather-icon-sun.png" width="140" height="140" alt="Sun icon">
+          <h2>Sunrise/sunset</h2>
+          <p>See at what time today the sun rises and sets in a city</p>
+          <input id="searchSunrise" class="form-control" placeholder="city">
+          <button id="sunriseBtn" class="btn btn-info" type="button">Get time</button>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-3">
-          <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
+      
       </div><!-- /.row -->
 
 
       <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
-
       <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading"><span class="text-muted"></span></h2>
-          <p class="lead"></p>
+        <div class="col-md-7" id="displayArea">
+           <!--This is where the requested data is displayed -->
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-fluid mx-auto" src="pics/mixed.png" alt="Mixed weather icon">
         </div>
       </div>
 
       <hr class="featurette-divider">
-
+      <a name="about"></a>
       <div class="row featurette">
         <div class="col-md-7 push-md-5">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          
+          <h2 class="featurette-heading">Why? <span class="text-muted">About this project</span></h2>
+          <p class="lead">This project was made as an assignment for the JavaScript course I'm currently taking at Nackademin. I'm studying to become a front-end developer and with this exercise i got to practice making GET-request using jQuery and AJAX. I've used Bootstrap for the styling, as well as some pictures from various pages.</p>
         </div>
         <div class="col-md-5 pull-md-7">
-          <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-fluid mx-auto" src="pics/why.png" alt="Question mark">
         </div>
       </div>
 
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
+      
 
       <hr class="featurette-divider">
 
@@ -170,7 +135,7 @@
       <!-- FOOTER -->
       <footer>
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>Annelie Viklund &middot; Front-end developer at Nackademin &middot; <a href="mailto:annelieviklund@gmail.com">annelieviklund@gmail.com</a></p>
       </footer>
 
     </div><!-- /.container -->
@@ -179,10 +144,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="dist/js/main.js"></script>
   </body>
 </html>
