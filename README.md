@@ -1,9 +1,11 @@
 # Weather App
 
-By: Annelie Viklund
-Studying: Front-end developer (2016 - 2018) at Nackademin
-Current course: JavaScript2
-Links to project: [Live version](https://anneliev.github.io/WeatherApp/)  [Code](https://github.com/anneliev/WeatherApp)
+By: Annelie Viklund  
+Studying: Front-end developer (2016 - 2018) at Nackademin  
+Current course: JavaScript2  
+Links to project: [Live version](https://anneliev.github.io/WeatherApp/)  [Code](https://github.com/anneliev/WeatherApp)  
+
+---
 
 We got an assignment in the JavaScript course to make an application that gets data from an API. I have made a weather application that has three features. The user can choose to see the weather for today, get a 5 days forecast or see at what time the sun rises and sets. I used the framework Bootstrap for styling the page.
 
