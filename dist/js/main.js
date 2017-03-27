@@ -38,7 +38,7 @@ const dataBase = {
 				console.log(theWeather);
 				let weatherToShow = `<li class="weatherDisplay">
 				<h1>${theWeather.name}</h1><br />
-				<img src="http://openweathermap.org/img/w/${theWeather.weather[0].icon}.png"></img><br /><br />
+				<img src="https://openweathermap.org/img/w/${theWeather.weather[0].icon}.png"></img><br /><br />
 				<p>Weather: <strong>${theWeather.weather[0].main}</strong>, ${theWeather.weather[0].description}</p>
 				<p>Temperature: ${parseFloat(theWeather.main.temp - 273.15).toFixed(1)} °C</p>
 				</li>`;
@@ -72,7 +72,7 @@ const dataBase = {
 				for(let i = 0; i < 6; i++){
 					let wetherToShow = `<li class="weatherDisplay">
 					<h4>${dataBase.dateConverter(theWeather.list[i + 1].dt)}</h4>
-					<img src="http://openweathermap.org/img/w/${theWeather.list[i].weather[0].icon}.png"></img><br /><br />
+					<img src="https://openweathermap.org/img/w/${theWeather.list[i].weather[0].icon}.png"></img><br /><br />
 					<p>Weather: <strong>${theWeather.list[i].weather[0].main}</strong>, ${theWeather.list[i].weather[0].description}</p>
 					<p>Temperature: ${parseFloat(theWeather.list[i].temp.day - 273.15).toFixed(1)} °C</p>
 					</li><br /><br />`;
@@ -99,9 +99,9 @@ const dataBase = {
 				let weatherToShow = `<li class="weatherDisplay">
 				<h1>${theWeather.name}</h1>
 				<h4>${dataBase.dateConverter(theWeather.sys.sunrise)}</h4><br />
-				<img src="http://openweathermap.org/img/w/01d.png"></img>
+				<img src="https://openweathermap.org/img/w/01d.png"></img>
 				<p><strong>Sunrise: </strong>${dataBase.timeConverter(theWeather.sys.sunrise)}</p><br />
-				<img src="http://openweathermap.org/img/w/01n.png"></img>
+				<img src="https://openweathermap.org/img/w/01n.png"></img>
 				<p><strong>Sunset: </strong>${dataBase.timeConverter(theWeather.sys.sunset)}</p>
 				</li>`;
 				displayArea.innerHTML = weatherToShow;
