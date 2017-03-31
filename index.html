@@ -70,7 +70,7 @@
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
-
+     
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
@@ -78,21 +78,21 @@
           <h2>Current weather</h2>
           <p>Search todays weather in a city anywhere in the world</p>
           <input id="searchCurrent" class="form-control" placeholder="Stockholm">
-          <a href="#displayArea" id="currentBtn" class="btn btn-info" type="button">Get current weather</a><!-- Using a link as a button to get to the display area when button is clicked -->
+          <button id="currentBtn" class="btn btn-info" type="button">Get current weather</button><!-- Using a link as a button to get to the display area when button is clicked -->
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="rounded-circle" src="pics/weather-icon-lightning.png" width="140" height="140" alt="Lightning icon">
           <h2>5 day forecast</h2>
           <p>See what the weather we be like tomorrow and 5 days from now</p>
           <input id="searchForecast" class="form-control" placeholder="city">
-          <a href="#displayArea" id="forecastBtn" class="btn btn-info" type="button">Get forecast</a>
+          <button id="forecastBtn" class="btn btn-info" type="button">Get forecast</button>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="rounded-circle" src="pics/weather-icon-sun.png" width="140" height="140" alt="Sun icon">
           <h2>Sunrise/sunset</h2>
           <p>See at what time today the sun rises and sets in a city</p>
           <input id="searchSunrise" class="form-control" placeholder="city">
-          <a href="#displayArea" id="sunriseBtn" class="btn btn-info" type="button">Get time</a>
+          <button id="sunriseBtn" class="btn btn-info" type="button">Get time</button>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
@@ -101,8 +101,10 @@
       <hr class="featurette-divider">
       <div class="row featurette">
         <div class="col-md-7" id="displayArea">
-           <!--This is where the requested data is displayed -->
-          <img id ="loadsymbol" src="pics/load-color.gif" alt="Loading symbol" style="display:none"><!--Hidden load symbol -->
+          <!--This is where the requested data is displayed -->
+          <div>
+            <img id ="loadsymbol" src="pics/load-color.gif" alt="Loading symbol" style="display:none"><!--Hidden load symbol -->
+          </div>
         </div>
         <div class="col-md-5">
         <a href="#">Back to top</a><br />

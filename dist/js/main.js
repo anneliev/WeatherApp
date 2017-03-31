@@ -5,25 +5,37 @@ const elem = {
 	forecastBtn: document.getElementById("forecastBtn"),
 	sunriseBtn: document.getElementById("sunriseBtn"),
 	displayArea: document.getElementById("displayArea"),
-	loadsymbol: document.getElementById("loadsymbol")
+	loadsymbol: document.getElementById("loadsymbol"),
+	btn: document.getElementsByClassName("btn")
 };
 
 //Module pattern using IIFE with event listeners on the buttons on HTML page. Calling functions when clicked on
 const searchButtons = (function(){
 	elem.currentBtn.addEventListener("click", function(){
 		weatherFunctions.getCurrent();//calling the function contianing the data and AJAX request
+		$('html, body').animate({//jQuery scroll function to smoothly scroll to the display area
+      		scrollTop: $("#displayArea").offset().top
+    	}, 600);
 	});
 
 	elem.forecastBtn.addEventListener("click", function(){
 		weatherFunctions.getForecast();
+		$('html, body').animate({
+      		scrollTop: $("#displayArea").offset().top
+    	}, 600);
 	});
 
 	elem.sunriseBtn.addEventListener("click", function(){
 		weatherFunctions.getSunrise();
+		$('html, body').animate({
+      		scrollTop: $("#displayArea").offset().top
+    	}, 600);
 	});
 
 });
 searchButtons();//calling the function holdning the buttons
+
+
 
 const weatherFunctions = {//Object literl holdning the functions that are being called by searchButtons
 	getCurrent: () => {
@@ -36,18 +48,9 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 		$.get(info)//AJAX GET request with an arugument
 			.done((response) => {//if data is successfully loaded
 				console.log("Successfully loaded data");
-				let theWeather = response;
-				console.log(theWeather);
-				//template literal used to display the AJAX request on the HTML page
-				let weatherToShow = `<li class="weatherDisplay">
-				<h1>${theWeather.name}</h1>
-				<h4>${utilityFunctions.dateConverter(theWeather.dt)}</h4><br />
-				<img src="https://openweathermap.org/img/w/${theWeather.weather[0].icon}.png"></img><br /><br />
-				<p>Weather: <strong>${theWeather.weather[0].main}</strong>, ${theWeather.weather[0].description}</p>
-				<p>Temperature: ${parseFloat(theWeather.main.temp - 273.15).toFixed(1)} °C</p>
-				</li>`;
+				let weatherToShow = displayFunctions.current(response);//calling a function that uses the argument to display request
 				utilityFunctions.hide();//calling the function that hides the loading symbol, after the request is done
-				displayArea.innerHTML = weatherToShow;//dispalying the data on HTML page
+				displayArea.innerHTML = weatherToShow;//dispalying the data on HTML page)
 			})
 			.fail((error) => {//if data isn't successfully loaded, an alert with error message
 				alert ("Error. The requested data couldn't load. Type the name of a city in the search box or try to temporarily allow unsecure script on this page.");
@@ -67,24 +70,9 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 		$.get(info)
 			.done((response) => {
 				console.log("Successfully loaded data");
-				let theWeather = response;
-				console.log(theWeather);
-			
-				let city = `<li class="weatherDisplay">
-				<h1>${theWeather.city.name}</h1><br />
-				</li>`;
-				displayArea.innerHTML = city;
-				for(let i = 0; i < 6; i++){//a loop that goes thru 5 index in the array that is requested.
-					//a function is called to convert the date in the object, from unix numbers
-					let wetherToShow = `<li class="weatherDisplay">
-					<h4>${utilityFunctions.dateConverter(theWeather.list[i + 1].dt)}</h4>
-					<img src="https://openweathermap.org/img/w/${theWeather.list[i].weather[0].icon}.png"></img><br /><br />
-					<p>Weather: <strong>${theWeather.list[i].weather[0].main}</strong>, ${theWeather.list[i].weather[0].description}</p>
-					<p>Temperature: ${parseFloat(theWeather.list[i].temp.day - 273.15).toFixed(1)} °C</p>
-					</li><br /><br />`;
-					utilityFunctions.hide();
-					displayArea.innerHTML += wetherToShow;
-				}
+				let weatherToShow = displayFunctions.forecast(response);
+				utilityFunctions.hide();
+				displayArea.innerHTML += weatherToShow;
 			})
 			.fail((error) => {
 				alert ("The requested data couldn't load. Type the name of a city in the search box or try to temporarily allow unsecure script on this page.");
@@ -103,16 +91,7 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 		$.get(info)
 			.done((response) => {
 				console.log("Successfully loaded data");
-				let theWeather = response;
-				console.log(theWeather);
-				let weatherToShow = `<li class="weatherDisplay">
-				<h1>${theWeather.name}</h1>
-				<h4>${utilityFunctions.dateConverter(theWeather.sys.sunrise)}</h4><br />
-				<img src="https://openweathermap.org/img/w/01d.png"></img>
-				<p><strong>Sunrise: </strong>${utilityFunctions.timeConverter(theWeather.sys.sunrise)}</p><br />
-				<img src="https://openweathermap.org/img/w/01n.png"></img>
-				<p><strong>Sunset: </strong>${utilityFunctions.timeConverter(theWeather.sys.sunset)}</p>
-				</li>`;
+				let weatherToShow = displayFunctions.sunrise(response);
 				utilityFunctions.hide();
 				displayArea.innerHTML = weatherToShow;
 			})
@@ -124,7 +103,57 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 	}
 };
 
+const displayFunctions = {//object literal holdning display functions
+	current: (response) => {
+		let theWeather = response;
+		//template literal used to display the AJAX request on the HTML page
+		let weatherToShow = `<li class="weatherDisplay">
+			<h1>${theWeather.name}</h1>
+			<h4>${utilityFunctions.dateConverter(theWeather.dt)}</h4><br />
+			<img src="https://openweathermap.org/img/w/${theWeather.weather[0].icon}.png"></img><br /><br />
+			<p>Weather: <strong>${theWeather.weather[0].main}</strong>, ${theWeather.weather[0].description}</p>
+			<p>Temperature: ${parseFloat(theWeather.main.temp - 273.15).toFixed(1)} °C</p>
+			</li>`;
+		return weatherToShow;
+	},
+
+	forecast: (response) => {
+		let theWeather = response;
+		let city = `<li class="weatherDisplay">
+		<h1>${theWeather.city.name}</h1><br />
+		</li>`;
+		displayArea.innerHTML = city;
+		let weatherToShow = [];//array to hold propertys from for loop
+		for(let i = 0; i < 5; i++){//a loop that goes thru 5 index in the array that is requested.
+			//a function is called to convert the date in the object, from unix numbers
+			let weather = `<li class="weatherDisplay">
+				<h4>${utilityFunctions.dateConverter(theWeather.list[i + 1].dt)}</h4>
+				<img src="https://openweathermap.org/img/w/${theWeather.list[i].weather[0].icon}.png"></img><br /><br />
+				<p>Weather: <strong>${theWeather.list[i].weather[0].main}</strong>, ${theWeather.list[i].weather[0].description}</p>
+				<p>Temperature: ${parseFloat(theWeather.list[i].temp.day - 273.15).toFixed(1)} °C</p>
+			</li><br /><br />`;
+			weatherToShow.push(weather);
+		}	
+		return weatherToShow;	
+	},
+
+	sunrise: (response) => {
+		let theWeather = response;
+		let weatherToShow = `<li class="weatherDisplay">
+			<h1>${theWeather.name}</h1>
+			<h4>${utilityFunctions.dateConverter(theWeather.sys.sunrise)}</h4><br />
+			<img src="https://openweathermap.org/img/w/01d.png"></img>
+			<p><strong>Sunrise: </strong>${utilityFunctions.timeConverter(theWeather.sys.sunrise)}</p><br />
+			<img src="https://openweathermap.org/img/w/01n.png"></img>
+			<p><strong>Sunset: </strong>${utilityFunctions.timeConverter(theWeather.sys.sunset)}</p>
+		</li>`;
+		return weatherToShow;
+	}
+};
+
 const utilityFunctions = {//object literal holdning utility functions
+
+
 	timeConverter: (unixTime) => {//converts time from unix format
 		let time = new Date(unixTime * 1000);
 		let hour = time.getHours();
