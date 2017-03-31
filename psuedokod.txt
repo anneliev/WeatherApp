@@ -16,3 +16,4 @@ när man sökt på en stad görs get request och sedan visas en kartbild där st
 
 ha en loading indikator när datan hämtas
 
+
