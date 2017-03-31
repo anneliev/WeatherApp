@@ -17,10 +17,3 @@ när man sökt på en stad görs get request och sedan visas en kartbild där st
 ha en loading indikator när datan hämtas
 
 
-
-jquery scroll function
-fubction för display teplate
-
-div 100% av sidan för loadingsymbl
-överst
-tar över hela sidan
