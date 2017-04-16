@@ -41,7 +41,7 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 	getCurrent: () => {
 		let searchValue = searchCurrent.value;//user input value in search box
 		let apiKey = "&APPID=546212d0f83942c04cc3caec6ee321c9";//variable holding the APIkey
-		let api = "http://api.openweathermap.org/data/2.5/weather?q=";//the url to the API
+		let api = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=";//the url to the API
 		let info = api + searchValue + apiKey;//variable with the vaiables combined, used later as an argument
 		utilityFunctions.show();//calling the function with the loading symbol
 
@@ -53,7 +53,7 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 				displayArea.innerHTML = weatherToShow;//dispalying the data on HTML page)
 			})
 			.fail((error) => {//if data isn't successfully loaded, an alert with error message
-				alert ("Error. The requested data couldn't load. Type the name of a city in the search box or try to temporarily allow unsecure script on this page.");
+				alert ("Error. The requested data couldn't load. Type the name of a city in the search box.");
 				utilityFunctions.hide();//calling the function that hides the loading symbol, after the request is done
 			});
 		searchCurrent.value = "";//clearing the search box
@@ -62,7 +62,7 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 	getForecast: () => {
 		let searchValue = searchForecast.value;
 		let apiKey = "&APPID=546212d0f83942c04cc3caec6ee321c9";
-		let api = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
+		let api = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast/daily?q=";
 		let days = "&cnt=6";
 		let info = api + searchValue + days + apiKey;
 		utilityFunctions.show();
@@ -75,7 +75,7 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 				displayArea.innerHTML += weatherToShow;
 			})
 			.fail((error) => {
-				alert ("The requested data couldn't load. Type the name of a city in the search box or try to temporarily allow unsecure script on this page.");
+				alert ("The requested data couldn't load. Type the name of a city in the search box.");
 				utilityFunctions.hide();
 			});
 		searchForecast.value = "";
@@ -84,7 +84,7 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 	getSunrise: () => {
 		let searchValue = searchSunrise.value;
 		let apiKey = "&APPID=546212d0f83942c04cc3caec6ee321c9";
-		let api = "http://api.openweathermap.org/data/2.5/weather?q=";
+		let api = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=";
 		let info = api + searchValue + apiKey;
 		utilityFunctions.show();
 
@@ -96,7 +96,7 @@ const weatherFunctions = {//Object literl holdning the functions that are being 
 				displayArea.innerHTML = weatherToShow;
 			})
 			.fail((error) => {
-				alert ("The requested data couldn't load. Type the name of a city in the search box or try to temporarily allow unsecure script on this page.");
+				alert ("The requested data couldn't load. Type the name of a city in the search box.");
 				utilityFunctions.hide();
 			});
 		searchSunrise.value = "";
